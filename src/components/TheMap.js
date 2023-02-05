@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
-import {
-  GoogleMap,
-  Marker,
-  DirectionsRenderer,
-  MarkerF,
-} from "@react-google-maps/api";
+import React, { useState, useEffect, useContext } from "react";
+import currentTrip from "@/context/trip.context";
+import { GoogleMap, DirectionsRenderer, MarkerF } from "@react-google-maps/api";
 import mapStyles from "@/styles/TheMap.module.css";
 
-function TheMap({ currentPosition, setLoadedMap }) {
+function TheMap({ setLoadedMap }) {
   // useEffect(() => {
   //   if (tripDirections) {
   //     setNextStep(tripDirections.routes[0].legs[0].steps[currentStep]);
@@ -22,7 +18,7 @@ function TheMap({ currentPosition, setLoadedMap }) {
   //     // console.log(currentStep);
   //   }
   // }, [currentPosition, currentStep, tripDirections]);
-
+  const { trip, currentPosition } = useContext(currentTrip);
   return (
     <div className={mapStyles.googleMapWrapper}>
       <GoogleMap
