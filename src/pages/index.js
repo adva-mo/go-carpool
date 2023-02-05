@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useReducer } from "react";
+import { useState, useReducer, useRef } from "react";
 import useLocation from "@/hooks/use-location";
 import TheMap from "@/components/TheMap";
 import { useJsApiLoader } from "@react-google-maps/api";
@@ -11,6 +11,9 @@ const libraries = ["places"];
 
 export default function Home() {
   const [loadedMap, setLoadedMap] = useState(null);
+
+  const originRef = useRef();
+  const destinationRef = useRef();
 
   const [trip, dispatchTrip] = useReducer(TripReducers, initialState);
 
@@ -30,7 +33,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <currentTrip.Provider
-        value={{ trip, dispatchTrip, loadedMap, currentPosition }}
+        value={{
+          trip,
+          dispatchTrip,
+          loadedMap,
+          currentPosition,
+          originRef,
+          destinationRef,
+        }}
       >
         {currentPosition && <TripForm />}
         {isLoaded ? (

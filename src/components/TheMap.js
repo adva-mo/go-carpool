@@ -18,7 +18,7 @@ function TheMap({ setLoadedMap }) {
   //     // console.log(currentStep);
   //   }
   // }, [currentPosition, currentStep, tripDirections]);
-  const { trip, currentPosition } = useContext(currentTrip);
+  const { currentPosition } = useContext(currentTrip);
   return (
     <div className={mapStyles.googleMapWrapper}>
       <GoogleMap
