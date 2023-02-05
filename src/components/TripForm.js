@@ -5,16 +5,24 @@ import currentTrip from "@/context/trip.context";
 import Calculate from "./Calculate";
 
 function TripForm() {
-  const { originRef, destinationRef, currentPosition, trip, dispatchTrip } =
-    useContext(currentTrip);
+  const {
+    originRef,
+    destinationRef,
+    currentPosition,
+    trip,
+    dispatchTrip,
+    loadedMap,
+    setCurrentStep,
+    setNextStep,
+  } = useContext(currentTrip);
   const { distance, duration } = trip;
 
   const clearRoute = () => {
     originRef.current.value = "";
     destinationRef.current.value = "";
     dispatchTrip({ type: "CLEAR" });
-    // setCurrentStep(0);
-    // setNextStep(null);
+    setCurrentStep(0);
+    setNextStep(null);
   };
 
   return (

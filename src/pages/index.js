@@ -11,6 +11,8 @@ const libraries = ["places"];
 
 export default function Home() {
   const [loadedMap, setLoadedMap] = useState(null);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [nextStep, setNextStep] = useState(null);
 
   const originRef = useRef();
   const destinationRef = useRef();
@@ -40,18 +42,21 @@ export default function Home() {
           currentPosition,
           originRef,
           destinationRef,
+          setCurrentStep,
+          setNextStep,
+          currentStep,
+          nextStep,
         }}
       >
-        {currentPosition && <TripForm />}
-        {isLoaded ? (
-          <TheMap
-            // currentPosition={currentPosition}
-            setLoadedMap={setLoadedMap}
-          />
+        {currentPosition && isLoaded ? (
+          <>
+            <TripForm />
+            <TheMap setLoadedMap={setLoadedMap} />
+            {/* {navigation box here} */}
+          </>
         ) : (
           <p>Loading...</p>
         )}
-        {/* {navigation box here} */}
       </currentTrip.Provider>
     </>
   );

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import currentTrip from "@/context/trip.context";
 
 function Calculate() {
-  const { originRef, destinationRef, currentPosition, trip, dispatchTrip } =
+  const { originRef, destinationRef, currentPosition, dispatchTrip } =
     useContext(currentTrip);
 
   const calculateRoute = async () => {
@@ -20,7 +20,7 @@ function Calculate() {
       dispatchTrip({
         type: "NEW-TRIP",
         payload: {
-          directions: result,
+          directions: result.routes[0].legs[0].steps,
           distance: result.routes[0].legs[0].distance.text,
           duration: result.routes[0].legs[0].duration.text,
           origin,
