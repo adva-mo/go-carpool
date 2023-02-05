@@ -1,5 +1,5 @@
 export const initialState = {
-  directions: [],
+  directions: null,
   distance: "",
   duration: "",
 

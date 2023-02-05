@@ -20,7 +20,7 @@ function Calculate() {
       dispatchTrip({
         type: "NEW-TRIP",
         payload: {
-          directions: result.routes[0].legs[0].steps,
+          directions: result,
           distance: result.routes[0].legs[0].distance.text,
           duration: result.routes[0].legs[0].duration.text,
           origin,

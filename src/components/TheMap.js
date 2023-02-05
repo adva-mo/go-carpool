@@ -15,9 +15,9 @@ function TheMap({ setLoadedMap }) {
   } = useContext(currentTrip);
   // const { directions } = trip;
   // console.log(trip?.directions.routes[0].legs[0].steps);
-
+  console.log(trip);
   useEffect(() => {
-    if (trip.directions?.length > 0) {
+    if (trip.directions) {
       console.log("use effect the map");
       setNextStep(trip[currentStep]);
       if (!nextStep) return;
@@ -46,7 +46,7 @@ function TheMap({ setLoadedMap }) {
         options={{ zoomControl: true, streetViewControl: false }}
       >
         <MarkerF position={currentPosition} />
-        {trip?.directions > 0 && <DirectionsRenderer directions={directions} />}
+        {trip.directions && <DirectionsRenderer directions={trip.directions} />}
       </GoogleMap>
     </div>
   );
