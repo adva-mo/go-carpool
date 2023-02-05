@@ -4,7 +4,7 @@ import styles from "@/styles/TheMap.module.css";
 
 function NavigationBox() {
   const { nextStep } = useContext(currentTrip);
-  // console.log(nextStep);
+
   return (
     <div className={styles.card}>
       directions:
