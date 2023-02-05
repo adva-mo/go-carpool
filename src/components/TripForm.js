@@ -1,5 +1,6 @@
 import React from "react";
 import { Autocomplete, GoogleMap } from "@react-google-maps/api";
+import styles from "@/styles/TheMap.module.css";
 
 function TripForm({ currentPosition }) {
   const calculateRoute = async () => {
@@ -33,11 +34,8 @@ function TripForm({ currentPosition }) {
   };
 
   return (
-    <form
-      className="trip-form primary-card-box"
-      onSubmit={(e) => e.preventDefault()}
-    >
-      <div className="trip-form-line">
+    <form className={styles.card} onSubmit={(e) => e.preventDefault()}>
+      <div style={{ width: "100%", display: "flex" }}>
         <Autocomplete>
           <input
             placeholder="Current location"
@@ -51,7 +49,7 @@ function TripForm({ currentPosition }) {
           />
         </Autocomplete>
         <button onClick={() => calculateRoute()}>Calculate</button>
-        <button onClick={() => clearRoute()}>X</button>
+        <button onClick={() => clearRoute()}>clear</button>
       </div>
       <div style={{ width: "100%", display: "flex" }}>
         <input type="text" placeholder="Distance:" defaultValue={"distance"} />

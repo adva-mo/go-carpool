@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { useState } from "react";
 import useLocation from "@/hooks/use-location";
-import TheMap from "@/components/TheMap/TheMap";
+import TheMap from "@/components/TheMap";
 import { useJsApiLoader } from "@react-google-maps/api";
-import TripForm from "@/components/TripForm/TripForm";
+import TripForm from "@/components/TripForm";
 
 const libraries = ["places"];
 
@@ -26,9 +26,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       {currentPosition && <TripForm />}
-      {isLoaded && (
+      {isLoaded ? (
         <TheMap currentPosition={currentPosition} setLoadedMap={setLoadedMap} />
+      ) : (
+        <p>Loading...</p>
       )}
+      {/* {navigation box here} */}
     </>
   );
 }
