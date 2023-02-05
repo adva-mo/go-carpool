@@ -6,6 +6,7 @@ import { useJsApiLoader } from "@react-google-maps/api";
 import TripForm from "@/components/TripForm";
 import { TripReducers, initialState } from "@/reducers/trip.reducers";
 import currentTrip from "@/context/trip.context";
+import NavigationBox from "@/components/NavigationBox";
 
 const libraries = ["places"];
 
@@ -52,7 +53,7 @@ export default function Home() {
           <>
             <TripForm />
             <TheMap setLoadedMap={setLoadedMap} />
-            {/* {navigation box here} */}
+            {trip.directions && <NavigationBox />}
           </>
         ) : (
           <p>Loading...</p>

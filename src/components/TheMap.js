@@ -13,13 +13,12 @@ function TheMap({ setLoadedMap }) {
     setCurrentStep,
     nextStep,
   } = useContext(currentTrip);
-  // const { directions } = trip;
-  // console.log(trip?.directions.routes[0].legs[0].steps);
-  console.log(trip);
+
   useEffect(() => {
-    if (trip.directions) {
-      console.log("use effect the map");
-      setNextStep(trip[currentStep]);
+    if (trip.directions !== null) {
+      setNextStep(
+        trip.directions.routes[0].legs[0].steps[currentStep].instructions
+      );
       if (!nextStep) return;
       const nextStepLatLng = nextStep.end_location;
       const distance = calculateDistance(currentPosition, nextStepLatLng);
@@ -43,7 +42,10 @@ function TheMap({ setLoadedMap }) {
         center={currentPosition}
         zoom={10}
         mapContainerClassName={mapStyles.mapContainer}
-        options={{ zoomControl: true, streetViewControl: false }}
+        options={{
+          zoomControl: true,
+          streetViewControl: false,
+        }}
       >
         <MarkerF position={currentPosition} />
         {trip.directions && <DirectionsRenderer directions={trip.directions} />}

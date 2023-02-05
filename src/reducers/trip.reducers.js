@@ -2,7 +2,6 @@ export const initialState = {
   directions: null,
   distance: "",
   duration: "",
-
   origin: "",
   destination: "",
 };
@@ -10,7 +9,6 @@ export const initialState = {
 export const TripReducers = (state, action) => {
   switch (action.type) {
     case "NEW-TRIP":
-      console.log("reducer");
       return addTrip(action.payload);
     case "CLEAR":
       return initialState;
@@ -20,7 +18,6 @@ export const TripReducers = (state, action) => {
 };
 
 const addTrip = ({ directions, distance, duration, origin, destination }) => {
-  console.log(directions);
   return {
     directions,
     distance,
