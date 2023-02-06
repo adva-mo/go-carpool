@@ -8,7 +8,7 @@ import TheMap from "@/components/TheMap";
 
 const libraries = ["places"];
 
-const TripProvider = ({ children }) => {
+const TripProvider = () => {
   const [loadedMap, setLoadedMap] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [nextStep, setNextStep] = useState(null);
