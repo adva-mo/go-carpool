@@ -3,7 +3,6 @@ import currentTrip from "@/context/trip.context";
 import { GoogleMap, DirectionsRenderer, MarkerF } from "@react-google-maps/api";
 import mapStyles from "@/styles/TheMap.module.css";
 import { calculateDistance } from "@/utils/utils";
-import Users from "@/components/Users";
 
 function TheMap({ setLoadedMap }) {
   const {
@@ -48,6 +47,7 @@ function TheMap({ setLoadedMap }) {
           streetViewControl: false,
         }}
       >
+        {/* <OnlineUsers /> */}
         {/* {gushDanCoordinates.map((location) => (
           <MarkerF position={location} />
         ))} */}
