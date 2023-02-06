@@ -1,7 +1,6 @@
 import React, { useState, useReducer, useRef } from "react";
 import currentTrip from "@/context/trip.context";
 import { TripReducers, initialState } from "@/reducers/trip.reducers";
-import useLocation from "@/hooks/use-location";
 import { useJsApiLoader } from "@react-google-maps/api";
 import TripForm from "@/components/TripForm";
 import TheMap from "@/components/TheMap";
@@ -10,15 +9,13 @@ const libraries = ["places"];
 
 const TripProvider = () => {
   const [loadedMap, setLoadedMap] = useState(null);
+
   const [currentStep, setCurrentStep] = useState(0);
   const [nextStep, setNextStep] = useState(null);
+  const [trip, dispatchTrip] = useReducer(TripReducers, initialState);
 
   const originRef = useRef();
   const destinationRef = useRef();
-
-  const [trip, dispatchTrip] = useReducer(TripReducers, initialState);
-
-  const { currentPosition } = useLocation();
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -29,8 +26,6 @@ const TripProvider = () => {
   const value = {
     trip,
     dispatchTrip,
-    // loadedMap,
-    currentPosition,
     originRef,
     destinationRef,
     setCurrentStep,
@@ -41,7 +36,7 @@ const TripProvider = () => {
 
   return (
     <currentTrip.Provider value={value}>
-      {isLoaded && currentPosition ? (
+      {isLoaded ? (
         <>
           <TripForm />
           <TheMap setLoadedMap={setLoadedMap} />

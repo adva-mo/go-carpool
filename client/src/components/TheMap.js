@@ -3,16 +3,13 @@ import currentTrip from "@/context/trip.context";
 import { GoogleMap, DirectionsRenderer, MarkerF } from "@react-google-maps/api";
 import mapStyles from "@/styles/TheMap.module.css";
 import { calculateDistance } from "@/utils/utils";
+import { locationContext } from "./LocationProvider";
 
 function TheMap({ setLoadedMap }) {
-  const {
-    trip,
-    currentPosition,
-    currentStep,
-    setNextStep,
-    setCurrentStep,
-    nextStep,
-  } = useContext(currentTrip);
+  const { trip, currentStep, setNextStep, setCurrentStep, nextStep } =
+    useContext(currentTrip);
+
+  const { currentPosition } = useContext(locationContext);
 
   useEffect(() => {
     if (trip.directions !== null) {
@@ -51,7 +48,7 @@ function TheMap({ setLoadedMap }) {
         {/* {gushDanCoordinates.map((location) => (
           <MarkerF position={location} />
         ))} */}
-        {/* <MarkerF position={currentPosition} /> */}
+        <MarkerF position={currentPosition} />
         {trip.directions && <DirectionsRenderer directions={trip.directions} />}
       </GoogleMap>
     </div>
