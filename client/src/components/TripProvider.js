@@ -4,6 +4,7 @@ import { TripReducers, initialState } from "@/reducers/trip.reducers";
 import { useJsApiLoader } from "@react-google-maps/api";
 import TripForm from "@/components/TripForm";
 import TheMap from "@/components/TheMap";
+import NavigationBox from "./NavigationBox";
 
 const libraries = ["places"];
 

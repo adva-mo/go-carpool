@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import currentTrip from "@/context/trip.context";
+import { locationContext } from "./LocationProvider";
 
 function Calculate() {
-  const { originRef, destinationRef, currentPosition, dispatchTrip } =
-    useContext(currentTrip);
+  const { originRef, destinationRef, dispatchTrip } = useContext(currentTrip);
+
+  const { currentPosition } = useContext(locationContext);
+  console.log(currentPosition);
 
   const calculateRoute = async () => {
     if (destinationRef.current.value === "") return;

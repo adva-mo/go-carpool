@@ -9,12 +9,14 @@ function SocketProvider({ children }) {
   const value = { socket };
 
   const { currentPosition } = useContext(locationContext);
+  // console.log(currentPosition);
 
   useEffect(() => {
-    socket.on("connect", () => {
-      console.log("connection opened");
-      socket.emit("data", { ...currentPosition });
-    });
+    if (!socket) return;
+    console.log("connection opened");
+    // socket.on("connect", () => {
+    socket.emit("data", { ...currentPosition });
+    // });
     socket.on("users", (data) => {
       console.log(data);
     });
@@ -22,7 +24,7 @@ function SocketProvider({ children }) {
     return () => {
       socket.close();
     };
-  }, []);
+  }, [socket]);
 
   return (
     <currentSocket.Provider value={value}>{children}</currentSocket.Provider>

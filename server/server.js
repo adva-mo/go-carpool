@@ -19,9 +19,11 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
+  console.log("conected socket");
+
   socket.on("data", (data) => {
     //add users data to DB then emit list of all users
-    socket.broadcast.emit("users", "users");
+    io.emit("users", "users");
     console.log(data);
   });
 });
