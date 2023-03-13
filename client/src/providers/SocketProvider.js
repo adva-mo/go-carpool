@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import currentSocket from "../context/socket.context.js";
 import { io } from "socket.io-client";
 import { locationContext } from "./LocationProvider.js";
+
+const currentSocket = React.createContext({});
 
 const socket = io("http://localhost:3001");
 
@@ -9,7 +10,6 @@ function SocketProvider({ children }) {
   const value = { socket };
 
   const { currentPosition } = useContext(locationContext);
-  // console.log(currentPosition);
 
   useEffect(() => {
     if (!socket) return;

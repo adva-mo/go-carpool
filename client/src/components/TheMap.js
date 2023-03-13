@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import currentTrip from "@/context/trip.context";
+// import currentTrip from "@/context/trip.context";
 import { GoogleMap, DirectionsRenderer, MarkerF } from "@react-google-maps/api";
 import mapStyles from "@/styles/TheMap.module.css";
 import { calculateDistance } from "@/utils/utils";
-import { locationContext } from "./LocationProvider";
+import { locationContext } from "@/providers/LocationProvider";
+import { currentTrip } from "../providers/TripProvider";
 
 function TheMap({ setLoadedMap }) {
   const { trip, currentStep, setNextStep, setCurrentStep, nextStep } =

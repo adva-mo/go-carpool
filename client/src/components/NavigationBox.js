@@ -1,4 +1,4 @@
-import currentTrip from "@/context/trip.context";
+import { currentTrip } from "@/providers/TripProvider";
 import React, { useContext } from "react";
 import styles from "@/styles/TheMap.module.css";
 

@@ -1,7 +1,7 @@
 import Head from "next/head";
-import SocketProvider from "../components/SocketProvider";
-import TripProvider from "../components/TripProvider";
-import LocationProvider from "../components/LocationProvider";
+import SocketProvider from "../providers/SocketProvider";
+import TripProvider from "../providers/TripProvider";
+import LocationProvider from "../providers/LocationProvider";
 
 export default function Home() {
   return (

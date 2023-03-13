@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Autocomplete } from "@react-google-maps/api";
 import styles from "@/styles/TheMap.module.css";
-import currentTrip from "@/context/trip.context";
+import { currentTrip } from "../providers/TripProvider";
 import Calculate from "./Calculate";
 
 function TripForm() {
@@ -15,6 +15,7 @@ function TripForm() {
     setCurrentStep,
     setNextStep,
   } = useContext(currentTrip);
+
   const { distance, duration } = trip;
 
   const clearRoute = () => {

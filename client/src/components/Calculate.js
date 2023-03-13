@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import currentTrip from "@/context/trip.context";
-import { locationContext } from "./LocationProvider";
+import { currentTrip } from "../providers/TripProvider";
+import { locationContext } from "../providers/LocationProvider";
 
 function Calculate() {
   const { originRef, destinationRef, dispatchTrip } = useContext(currentTrip);

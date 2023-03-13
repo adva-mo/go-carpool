@@ -1,10 +1,12 @@
 import React, { useState, useReducer, useRef } from "react";
-import currentTrip from "@/context/trip.context";
+// import currentTrip from "@/context/trip.context";
 import { TripReducers, initialState } from "@/reducers/trip.reducers";
 import { useJsApiLoader } from "@react-google-maps/api";
 import TripForm from "@/components/TripForm";
 import TheMap from "@/components/TheMap";
-import NavigationBox from "./NavigationBox";
+import NavigationBox from "../components/NavigationBox";
+
+export const currentTrip = React.createContext({});
 
 const libraries = ["places"];
 
