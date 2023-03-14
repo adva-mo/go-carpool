@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-// import currentTrip from "@/context/trip.context";
 import { GoogleMap, DirectionsRenderer, MarkerF } from "@react-google-maps/api";
 import mapStyles from "@/styles/TheMap.module.css";
 import { calculateDistance } from "@/utils/utils";
@@ -17,7 +16,7 @@ function TheMap({ setLoadedMap }) {
       setNextStep(
         trip.directions.routes[0].legs[0].steps[currentStep].instructions
       );
-      if (!nextStep) return;
+      if (!nextStep) return; //user have reached destination
       const nextStepLatLng = nextStep.end_location;
       const distance = calculateDistance(currentPosition, nextStepLatLng);
 
